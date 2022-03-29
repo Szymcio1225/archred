@@ -107,7 +107,68 @@ Open KDE Settings
         Accessibility - > Accessibility: Disable default shortcut
         KRunner - > KRunner: Enable "Search" and add "META+R"(WIN+R) shortcut
         Session Management - > Disable shortcut for "Log out:"
+	
+➡️ KDE Panel
 
+        Move Virtual Desktops Widget to right side
+	
+        Pins:
+        Google Chrome
+        Dolphin File Browser
+	
+        Panel Height: 48
+
+        System tray:
+        Multimedia player: Always Hidden
+        Notifications: Always Hidden
+        Updates: Always Hidden
+        Battery / Brightness: Always Hidden OR Always Shown(Laptop)
+        Bluetooth: Shown when relevant
+        Disk / Devices: Shown when relevant
+        Touchpad: Always Hidden
+        Sound: Always Shown
+        Network: Always shown
+        Keyboards Layout: Always hidden
+        Display settings: Always hidden
+        Typing method: Always hidden
+        Night mode: Shown when relevant
+        Disk Allocation: Always hidden
+        Clipboard: Always Hidden
+        Safe: Always hidden
+        Weather: Disabled
+
+🐬 Dolphin File Manager Settings
+
+        Configure Dolphin
+		General
+			Behavior > Sorting mode: Alphabetical, case sensitive
+			Confirmations > Enable Moving files or folder to trash
+		
+		Startup
+		Show on startup
+			/home/$USER
+			
+		New windows:
+			Enable:
+			Show filter bar;
+			Make location bar editable;
+			
+		General:
+			Enable:
+			Show full path inside location bar;
+			Show full path in title bar;
+			
+		View modes:
+			Details
+			
+		Context Menu:
+			Enable:
+			Copy To and Move To commands;
+			Delete;
+			
+			Download New Services:
+			Open Dolphin as root;
+			
 ```
 
 
