@@ -1,31 +1,33 @@
 #!/bin/bash
 
-cd /etc
-echo "LANG=en_US.UTF-8
-LANGUAGE=en_US.UTF-8
-LC_NUMERIC=pl_PL.UTF-8
-LC_TIME=pl_PL.UTF-8
-LC_COLLATE=pl_PL.UTF-8
-LC_MONETARY=pl_PL.UTF-8
-LC_MESSAGES=pl_PL.UTF-8
-LC_PAPER=pl_PL.UTF-8
-LC_NAME=pl_PL.UTF-8
-LC_ADDRESS=pl_PL.UTF-8
-LC_TELEPHONE=pl_PL.UTF-8
-LC_MEASUREMENT=pl_PL.UTF-8
-LC_IDENTIFICATION=pl_PL.UTF-8" > locale.conf
+var_a="en_US.UTF-8"
+var_b="pl_PL.UTF-8"
 
-cd /etc/default/
-echo "LANG=en_US.UTF-8
-LANGUAGE=en_US.UTF-8
-LC_NUMERIC=pl_PL.UTF-8
-LC_TIME=pl_PL.UTF-8
-LC_COLLATE=pl_PL.UTF-8
-LC_MONETARY=pl_PL.UTF-8
-LC_MESSAGES=pl_PL.UTF-8
-LC_PAPER=pl_PL.UTF-8
-LC_NAME=pl_PL.UTF-8
-LC_ADDRESS=pl_PL.UTF-8
-LC_TELEPHONE=pl_PL.UTF-8
-LC_MEASUREMENT=pl_PL.UTF-8
-LC_IDENTIFICATION=pl_PL.UTF-8" > locale
+echo "Default interface language is set to '$var_a' and region is set to '$var_b'"
+echo "Please type interface language and region"
+echo ""
+
+echo "Set interface language:"
+read $var_a
+clear
+echo "Interface language set to: $var_a"
+
+echo ""
+echo "Set region:"
+read $var_b
+clear
+echo "Region set to: $var_b"
+
+echo "LANG=$var_a
+LANGUAGE=$var_a
+LC_NUMERIC=$var_b
+LC_TIME=$var_b
+LC_COLLATE=$var_b
+LC_MONETARY=$var_b
+LC_MESSAGES=$var_b
+LC_PAPER=$var_b
+LC_NAME=$var_b
+LC_ADDRESS=$var_b
+LC_TELEPHONE=$var_b
+LC_MEASUREMENT=$var_b
+LC_IDENTIFICATION=$var_b" | tee -a /etc/locale.conf /etc/default/locale
