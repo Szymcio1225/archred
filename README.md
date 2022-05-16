@@ -1,4 +1,4 @@
-# 💾 My personal script for installing packages for Arch Linux and more!
+# 💾 My personal scripts for GNU/Linux 🐧!
 
 ## 🔧 Installation
 * Boot Arch Linux iso @ [https://archlinux.org/download/](https://archlinux.org/download/)
