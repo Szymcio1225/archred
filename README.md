@@ -26,7 +26,7 @@ iwctl --passphrase passphrase station device connect SSID
 * After installation is completed, log in to the desktop
 * Run any Terminal (eg. Konsole) and type ```sudo pacman -Syu``` to check for latest updates
 * Clone my repo with
-```gh repo clone Szymcio1225/archred OR git clone https://github.com/Szymcio1225/archred.git```
+```gh repo clone Szymcio1225/archred``` or ```git clone https://github.com/Szymcio1225/archred.git```
 * Execute my script by typing ```./archred.sh```
 
 * Enable multilib in the pacman config by uncommenting these two lines in pacman.conf:
