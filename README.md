@@ -31,13 +31,14 @@ iwctl --passphrase passphrase station device connect SSID
 
 * Enable multilib in the pacman config by uncommenting these two lines in pacman.conf:
 
-```sudo nano /etc/pacman.conf```
+* Edit pacman.conf ```sudo nano /etc/pacman.conf```
 
-```[multilib]
+```
+[multilib]
 Include = /etc/pacman.d/mirrorlist
 ```
 
-```sudo pacman -Syyu```
+* Type ```sudo pacman -Syyu``` to update.
 
 ---------------------------------------------
 
