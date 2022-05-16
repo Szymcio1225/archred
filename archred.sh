@@ -8,7 +8,7 @@ echo -ne "
 ██   ██ ██   ██ ██      ██   ██     ██   ██ ██      ██   ██ 
 ██   ██ ██   ██  ██████ ██   ██     ██   ██ ███████ ██████  
 -------------------------------------------------------------
-                    Arch "Red" Bash script by S.K.
+            Arch "Red" Bash script by Szymcio1225
 -------------------------------------------------------------
 "
 
@@ -58,10 +58,10 @@ done
 clear
 echo " "
 
-echo "5# Do you want to install these packages "yay -S gufw code google-chrome noto-fonts-emoji-apple steam gamemode"?"
+echo "5# Do you want to install these packages "yay -S gufw code brave-bin noto-fonts-emoji-apple steam gamemode"?"
 echo "* gufw - GUI firewall"
 echo "* code - Microsofts Code Editor"
-echo "* google-chrome (Stable)- Google Chrome web browser"
+echo "* brave-bin (Stable)- Brave Stable web browser"
 echo "* noto-fonts-emoji-apple - Replaces default emojis with Apple emojis"
 echo "* steam - Platform for games etc"
 echo "* gamemode - Daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS and/or a game process."
@@ -69,7 +69,7 @@ echo " "
 
 select yn in "Yes" "No"; do
     case $yn in
-        Yes ) echo "5# Downloading/Installing gufw, code, google-chrome, noto-fonts-emoji-apple, steam and gamemode.." && yay -S gufw code google-chrome noto-fonts-emoji-apple steam gamemode && break;;
+        Yes ) echo "5# Downloading/Installing gufw, code, brave-bin, noto-fonts-emoji-apple, steam and gamemode.." && yay -S gufw code brave-bin noto-fonts-emoji-apple steam gamemode && break;;
         No ) echo "5# Leaving..." && exit;;
     esac
 done
