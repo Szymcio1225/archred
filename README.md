@@ -188,7 +188,7 @@ Open KDE Settings
 
 
 ## 🛠️ TO DO
-* Automate setting up all my KDE Settings without doing it manually
+* Automate everything
 
 ## 😲👉🆓⁉️
 Feel free editing my bash code for yourself! 😋
