@@ -1,20 +1,11 @@
 #!/bin/bash
-
-echo "Please type interface language and region"
-echo ""
-
-echo "Set interface language:"
-read $var_a
-
+sudo rm -rf /etc/locale.conf
+sudo rm -rf /etc/default/locale
+read -p 'Interface language: ' var_a
+read -p 'Type region: ' var_b
 echo "LANG=$var_a
-LANGUAGE=$var_a" | tee -a /etc/locale.conf /etc/default/locale
-
-clear
-
-echo "Set region:"
-read $var_b
-
-echo "LC_NUMERIC=$var_b
+LANGUAGE=$var_a
+LC_NUMERIC=$var_b
 LC_TIME=$var_b
 LC_COLLATE=$var_b
 LC_MONETARY=$var_b
