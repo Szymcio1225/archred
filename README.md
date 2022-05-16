@@ -1,7 +1,7 @@
 # 💾 My personal script for installing packages for Arch Linux and more!
 
 ## 🔧 Installation
-* Boot Arch Linux iso (I'm currently using 2022.03.01) @ [https://archlinux.org/download/](https://archlinux.org/download/)
+* Boot Arch Linux iso @ [https://archlinux.org/download/](https://archlinux.org/download/)
 * Connect to internet
 (If using WiFi use Iwd) @ [https://wiki.archlinux.org/title/Iwd ](https://wiki.archlinux.org/title/Iwd)
 
