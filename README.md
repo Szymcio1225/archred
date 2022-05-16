@@ -1,11 +1,11 @@
-# 💾 My personal script for installing packages for Arch Linux
+# 💾 My personal script for installing packages for Arch Linux and more!
 
 ## 🔧 Installation
 * Boot Arch Linux iso (I'm currently using 2022.03.01) @ [https://archlinux.org/download/](https://archlinux.org/download/)
 * Connect to internet
 (If using WiFi use Iwd) @ [https://wiki.archlinux.org/title/Iwd ](https://wiki.archlinux.org/title/Iwd)
 
-## 📶 Connecting to WiFi network using Iwd
+## 📶 Connecting to WiFi network using IWD
 ```bash
 iwctl
 
@@ -25,10 +25,19 @@ iwctl --passphrase passphrase station device connect SSID
 * Type ```archinstall``` command and go through installation setup
 * After installation is completed, log in to the desktop
 * Run any Terminal (eg. Konsole) and type ```sudo pacman -Syu``` to check for latest updates
-* Execute my script by typing ```./archred.sh``` you can check yourself my code if you need to change something
+* Clone my repo with
+```gh repo clone Szymcio1225/archred OR git clone https://github.com/Szymcio1225/archred.git```
+* Execute my script by typing ```./archred.sh```
 
+* Enable multilib in the pacman config by uncommenting these two lines in pacman.conf:
 
+```sudo nano /etc/pacman.conf```
 
+```[multilib]
+Include = /etc/pacman.d/mirrorlist```
+
+Upgrade your system:
+```sudo pacman -Syyu```
 
 ## ⚙️ KDE Settings that I use.
 ```
@@ -53,6 +62,7 @@ Open KDE Settings
         > Virtual Desktops
         Add 2 more Virtual Desktops... Their names "1", "2" and "3"
         Options: > Slide > Gap between desktops H:0, V:0
+	Add 3 rows for vertical or use 1 row for horizontal
 
 ➡️ Startup and Shutdown
 
@@ -78,6 +88,7 @@ Open KDE Settings
 
         > Formats
         Region: "pl_PL.UTF-8" (Since I'm from Poland 😊)
+	(If it's broken then use "quicklanguagechanger.sh" bash script" (Default; interface lang; EN_US, region Poland)
 
 ➡️ Accessibility
 
@@ -86,7 +97,7 @@ Open KDE Settings
 
 ➡️ Configure Firewall
 
-        Enable "Firewall Status Enabled" (gufw/ufw)
+        Enable "Firewall Status Enabled" (gufw/ufw or firewalld)
 
 ➡️ Input Devices
 
@@ -113,7 +124,7 @@ Open KDE Settings
         Move Virtual Desktops Widget to right side
 	
         Pins:
-        Google Chrome
+        Brave Browser
         Dolphin File Browser
 	
         Panel Height: 48
