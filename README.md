@@ -34,10 +34,12 @@ iwctl --passphrase passphrase station device connect SSID
 ```sudo nano /etc/pacman.conf```
 
 ```[multilib]
-Include = /etc/pacman.d/mirrorlist```
+Include = /etc/pacman.d/mirrorlist
+```
 
-Upgrade your system:
 ```sudo pacman -Syyu```
+
+---------------------------------------------
 
 ## ⚙️ KDE Settings that I use.
 ```
