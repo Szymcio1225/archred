@@ -1,11 +1,7 @@
 #!/bin/bash
-# Arch "Red" Bash script by S.K.
-echo -ne "
--------------------------------------------------------------
-            Arch "Red" Bash script by Szymcio1225
--------------------------------------------------------------"
-echo " "
+# Arch "Red" Bash script by Szymcio1225
 
+echo " "
 echo "1# Installing git, yay"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 sudo pacman -Syu
