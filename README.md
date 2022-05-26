@@ -40,6 +40,8 @@ Include = /etc/pacman.d/mirrorlist
 
 * Type ```sudo pacman -Syyu``` to update.
 
+* Type ```sudo hwclock --systohc --localtime``` if dual booting and time is always changing and ```timedatectl``` to check
+
 ---------------------------------------------
 
 ## ⚙️ KDE Settings that I use.
