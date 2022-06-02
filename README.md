@@ -29,18 +29,22 @@ iwctl --passphrase passphrase station device connect SSID
 ```gh repo clone Szymcio1225/archred``` or ```git clone https://github.com/Szymcio1225/archred.git```
 * Execute my script by typing ```./archred.sh```
 
+
 * Enable multilib in the pacman config by uncommenting these two lines in pacman.conf:
-
 * Edit pacman.conf ```sudo nano /etc/pacman.conf```
-
 ```
 [multilib]
 Include = /etc/pacman.d/mirrorlist
 ```
-
 * Type ```sudo pacman -Syyu``` to update.
 
-* Type ```sudo hwclock --systohc --localtime``` if dual booting and time is always changing and ```timedatectl``` to check
+
+* Fix dual boot time change: type ```sudo hwclock --systohc --localtime```
+
+
+* Faster compiling: edit /etc/makepkg.conf replace in CFLAGS ```-march=x86-64 -mtune=generic``` to ```-march=native```
+* Set multiple threads for faster building ```MAKEFLAGS="-j$(nproc)"```
+* Speed up compression by adding -1 to COMPRESSZST: ```COMPRESSZST=(zstd -1 -c -z -q -)```
 
 ---------------------------------------------
 
