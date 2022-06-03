@@ -22,11 +22,8 @@ iwctl --passphrase passphrase station device connect SSID
 * Type ```exit``` to exit from Iwd
 * Check if you have internet connection by just pinging  eg. ```ping google.com```
 * Type ```archinstall``` command and go through installation setup
-* 
-* Clone my repo with
-```git clone https://github.com/Szymcio1225/archred.git```
+* Clone my repo with: ```git clone https://github.com/Szymcio1225/archred.git```
 * Execute my script by typing ```./archred.sh```
-
 
 ## 📦 Enabling multilib to install software like steam
 * Enable multilib in the pacman config by uncommenting these two lines in pacman.conf:
@@ -53,7 +50,9 @@ Include = /etc/pacman.d/mirrorlist
 * Open ```/etc/systemd/system.conf.d/system.conf```
 * Uncomment this line ```#DefaultTimeoutStopSec=90s```
 * Set ```DefaultTimeoutStopSec=90s``` to a shorter time```
-#
+
+## Install Wayland + Pipewire + JamesDSP
+Install: ```yay -S pipewire plasma-wayland-session jamesdsp```
 
 ---------------------------------------------
 
@@ -106,12 +105,7 @@ Open KDE Settings
 
         > Formats
         Region: "pl_PL.UTF-8" (Since I'm from Poland 😊)
-	(If it's broken then use "quicklanguagechanger.sh" bash script" (Default; interface lang; EN_US, region Poland)
-
-➡️ Accessibility
-
-        > Screen Reader
-        Disable "Enable Screen Reader"
+	(If it's broken then use "quicklanguagechanger.sh" bash script" (Default: interface lang; en_US-UTF-8, region; pl_PL.UTF-8)
 
 ➡️ Configure Firewall
 
@@ -120,7 +114,9 @@ Open KDE Settings
 ➡️ Input Devices
 
         > Mouse
-        Acceleration profile: Set to "Flat"
+        Acceleration profile: Flat
+	Scroll speed: 8
+	Pointer speed: 7
 
 ➡️ Power Management
 
