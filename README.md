@@ -1,4 +1,4 @@
-# 💾 My personal scripts for GNU/Linux 🐧!
+## 💾 My personal scripts for GNU/Linux 🐧!
 
 ## 🔧 Installation
 * Boot Arch Linux iso @ [https://archlinux.org/download/](https://archlinux.org/download/)
@@ -19,17 +19,16 @@ station device connect SSID
 
 iwctl --passphrase passphrase station device connect SSID
 ```
-
 * Type ```exit``` to exit from Iwd
 * Check if you have internet connection by just pinging  eg. ```ping google.com```
 * Type ```archinstall``` command and go through installation setup
-* After installation is completed, log in to the desktop
-* Run any Terminal (eg. Konsole) and type ```sudo pacman -Syu``` to check for latest updates
+* 
 * Clone my repo with
-```gh repo clone Szymcio1225/archred``` or ```git clone https://github.com/Szymcio1225/archred.git```
+```git clone https://github.com/Szymcio1225/archred.git```
 * Execute my script by typing ```./archred.sh```
 
 
+## 📦 Enabling multilib to install software like steam
 * Enable multilib in the pacman config by uncommenting these two lines in pacman.conf:
 * Edit pacman.conf ```sudo nano /etc/pacman.conf```
 ```
@@ -39,12 +38,22 @@ Include = /etc/pacman.d/mirrorlist
 * Type ```sudo pacman -Syyu``` to update.
 
 
-* Fix dual boot time change: type ```sudo hwclock --systohc --localtime```
+## 🪟+🐧 Fix dual boot time change:
+* type ```sudo hwclock --systohc --localtime```
 
 
-* Faster compiling: edit /etc/makepkg.conf replace in CFLAGS ```-march=x86-64 -mtune=generic``` to ```-march=native```
+## 🏗️ Faster compiling
+* Edit /etc/makepkg.conf replace in CFLAGS ```-march=x86-64 -mtune=generic``` to ```-march=native```
 * Set multiple threads for faster building ```MAKEFLAGS="-j$(nproc)"```
 * Speed up compression by adding -1 to COMPRESSZST: ```COMPRESSZST=(zstd -1 -c -z -q -)```
+
+
+## 🖥️ Fix SDDM hanging the system for 1:30 minutes every shutdown/restart
+* Copy the default systemd config file to the subdirectory: ```cp /etc/systemd/system.conf /etc/systemd/system.conf.d/```
+* Open ```/etc/systemd/system.conf.d/system.conf```
+* Uncomment this line ```#DefaultTimeoutStopSec=90s```
+* Set ```DefaultTimeoutStopSec=90s``` to a shorter time```
+#
 
 ---------------------------------------------
 
