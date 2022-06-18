@@ -49,11 +49,50 @@ Include = /etc/pacman.d/mirrorlist
 * Copy the default systemd config file to the subdirectory: ```cp /etc/systemd/system.conf /etc/systemd/system.conf.d/```
 * Open ```/etc/systemd/system.conf.d/system.conf```
 * Uncomment this line ```#DefaultTimeoutStopSec=90s```
-* Set ```DefaultTimeoutStopSec=90s``` to a shorter time```
+* Set ```DefaultTimeoutStopSec=90s``` to a shorter time
 
-## Install Wayland + Pipewire + JamesDSP
+## 🖵 + 🔊 Install Wayland + Pipewire + JamesDSP
 Install: ```yay -S pipewire plasma-wayland-session jamesdsp```
 
+## 🖱️ Fix slow scroll speed in X11
+* Install: ```yay -S imwheel```
+* Edit: ~/.imwheelrc file and paste this:
+```
+"^brave-browser$"
+None, Up, Button4, 3
+None, Down, Button5, 3
+Control_L, Up, Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L, Up, Shift_L|Button4
+Shift_L, Down, Shift_L|Button5
+
+"^google-chrome$"
+None, Up, Button4, 3
+None, Down, Button5, 3
+Control_L, Up, Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L, Up, Shift_L|Button4
+Shift_L, Down, Shift_L|Button5
+
+"^discord$"
+None, Up, Button4, 3
+None, Down, Button5, 3
+Control_L, Up, Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L, Up, Shift_L|Button4
+Shift_L, Down, Shift_L|Button5
+
+".*"
+ @Exclude
+```
+Create script to auto start at login so it can run only on X11 (
+```
+#!/bin/bash
+if [[ $DESKTOP_SESSION = "plasma" ]]; then
+   imwheel -b "45"
+fi
+
+```
 ---------------------------------------------
 
 ## ⚙️ KDE Settings that I use.
