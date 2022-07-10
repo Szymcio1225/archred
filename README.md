@@ -93,6 +93,19 @@ if [[ $DESKTOP_SESSION = "plasma" ]]; then
 fi
 
 ```
+
+## Fix small gtk buttons (eg. in Brave browser when using gtk+ theme the gtk buttons are small)
+ sudo nano ~/.config/gtk-3.0/gtk.css
+
+```
+button.titlebutton {
+    min-height: 32px;
+    min-width: 32px;
+    padding: 0;
+}
+```
+
+
 ---------------------------------------------
 
 ## ⚙️ KDE Settings that I use.
