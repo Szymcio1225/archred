@@ -126,11 +126,48 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 <br><br><br>
 ### 📶 Replace networks name
     Make network name like "eth0" instead of "ensXxxx"
+#### Using GRUB
 - Edit grub file: `sudo nano /etc/default/grub`
 
 - Add `net.ifnames=0 biosdevname=0` to `GRUB_CMDLINE_LINUX=`
 
 - Generate grub configuration file and reboot: `sudo grub-mkconfig -o /boot/grub/grub.cfg`
+
+#### Using rEFInd
+- Edit `/boot/refind_linux.conf`
+- Find line e.g.: "Boot with standard options" and just add into the second quotation marks `net.ifnames=0 biosdevname=0` 
+- My example:
+`Boot with standard options"  "root=UUID=randomtextnumbers rw net.ifnames=0 biosdevname=0 loglevel=3 nowatchdog nvme_load=YES`
+
+
+
+
+
+
+<br><br><br>
+### 🔑 Replacing GRUB with rEFInd + Adding shim
+    (TPM 2.0 + Secure Boot enabled and there's no need to manually boot Win11 / Linux distro)
+    
+- Install `refind`, `shim-signed`: `yay -S refind shim-signed`
+
+- Install shim to refind: `refind-install --shim /usr/share/shim-signed/shimx64.efi`
+
+- Reboot (It should boot to rEFInd boot manager)
+
+- To add kernel parameters like `net.ifnames=0 biosdevname=0`etc. just edit `/boot/refind_linux.conf`
+
+- To edit more options like default OS launch timeout edit `/boot/efi/EFI/refind/refind.conf`
+
+- To hide boot entries just select entry with arrow key and press Delete key.
+
+- To show more kernels entries like linux-lts, linux-zen just uncomment line #extra_kernel_version_strings linux-lts,linux (default entries; if you want to add zen kernel then add ",linux-zen")
+
+- Default menu selection; Find `#default_selection` line and just edit it.
+
+- My example if I want to boot after X timeout to Windows then I just add `default_selection Microsoft` and for Linux with ZEN kernel `default_selection "vmlinuz-linux-zen"` (you can find these names in rEFInd manager under OS icons')
+
+
+
 
 
 <br><br><br>
