@@ -7,20 +7,18 @@
 <br>
 
 ### 📶 Connecting to WiFi network using IWD
-```
-iwctl
 
-device list
+`iwctl` <br>
 
-station device scan
+`device list` <br>
 
-station device get-networks
+`station device scan` <br>
 
-station device connect SSID
+`station device get-networks` <br>
 
-iwctl --passphrase passphrase station device connect SSID
-```
-- Type `exit` to exit from Iwd  
+`station device connect SSID` - (Put password for wifi after) <br>
+
+- Type `exit` to exit from Iwd
 - Check if you have internet connection by just pinging  e.g. `ping google.com`  
 - Type `archinstall` command and go through installation setup<br><br><br>
 
@@ -68,21 +66,13 @@ iwctl --passphrase passphrase station device connect SSID
 
 
 ### 🖱️ Fix slow scroll speed in X11
-* Install imwheel:
-```yay -S imwheel```
-* Edit: `~/.imwheelrc` file and paste this:
-```
-"^brave-browser$"
-None, Up, Button4, 3
-None, Down, Button5, 3
-Control_L, Up, Control_L|Button4
-Control_L, Down, Control_L|Button5
-Shift_L, Up, Shift_L|Button4
-Shift_L, Down, Shift_L|Button5
+* Install imwheel: `yay -S imwheel`
+* Edit: `~/.imwheelrc` file and paste this: <br>
 
-"^google-chrome$"
-None, Up, Button4, 3
-None, Down, Button5, 3
+```
+"^firefox$"
+None, Up, Button4, 1
+None, Down, Button5, 1
 Control_L, Up, Control_L|Button4
 Control_L, Down, Control_L|Button5
 Shift_L, Up, Shift_L|Button4
@@ -96,8 +86,21 @@ Control_L, Down, Control_L|Button5
 Shift_L, Up, Shift_L|Button4
 Shift_L, Down, Shift_L|Button5
 
+"^Spotify$"
+None, Up, Button4, 10
+None, Down, Button5, 10
+Control_L, Up, Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L, Up, Shift_L|Button4
+Shift_L, Down, Shift_L|Button5
+
 ".*"
- @Exclude
+None, Up, Button4, 1
+None, Down, Button5, 1
+Control_L, Up, Control_L|Button4
+Control_L, Down, Control_L|Button5
+Shift_L, Up, Shift_L|Button4
+Shift_L, Down, Shift_L|Button5 
 ```
 
 - Create auto start script so it can run only on X11 (Script doesn't execute on Wayland session)
@@ -142,8 +145,6 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 
-
-
 <br><br><br>
 ### 🔑 Replacing GRUB with rEFInd + Adding shim
     (TPM 2.0 + Secure Boot enabled and there's no need to manually boot Win11 / Linux distro)
@@ -165,6 +166,31 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 - Default menu selection; Find `#default_selection` line and just edit it.
 
 - My example if I want to boot after X timeout to Windows then I just add `default_selection Microsoft` and for Linux with ZEN kernel `default_selection "vmlinuz-linux-zen"` (you can find these names in rEFInd manager under OS icons')
+
+
+
+
+
+<br><br><br>
+### 🎵 Fix media buttons not working in some apps like Spotify, Firefox...
+
+    
+- Install playerctl<br>`yay -S playerctl`
+
+- Workspace > Shortcuts > Custom Shortcuts
+- Create New Group > Create inside this group
+- New > Global Shortcut > Command/URL
+- In Trigger tab use shortcut e.g. Fn+F7 for Media Previous
+- In Action tab put this command:<br>`playerctl --player=vlc,spotify,mpv,firefox previous`
+- Other media keys
+
+`playerctl --player=vlc,spotify,mpv,firefox previous`<br>
+`playerctl --player=vlc,spotify,mpv,firefox next`<br>
+`playerctl --player=vlc,spotify,mpv,firefox play-pause`<br>
+`playerctl --player=vlc,spotify,mpv,firefox stop`<br>
+
+**Source @ https://github.com/altdesktop/playerctl ❤️**
+
 
 
 
