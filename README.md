@@ -4,7 +4,7 @@
 ### 🔧 GNU/Linux Arch Installation using archinstall script
 - Boot Arch Linux iso @ https://archlinux.org/download/
 - Connect to internet (If using WiFi use Iwd) @ https://wiki.archlinux.org/title/Iwd
-<br>
+<br><br>
 
 ### 📶 Connecting to WiFi network using IWD
 
@@ -20,8 +20,9 @@
 
 - Type `exit` to exit from Iwd
 - Check if you have internet connection by just pinging  e.g. `ping google.com`  
-- Type `archinstall` command and go through installation setup<br><br><br>
+- Type `archinstall` command and go through installation setup
 
+<br><br>
 ### 📦 Enabling multilib to install software like steam
 
 - Edit `pacman.conf` and uncomment two lines: `sudo nano /etc/pacman.conf`
@@ -31,12 +32,13 @@
 #Include = /etc/pacman.d/mirrorlist
 ```
 
-- Update mirrorlist using: `sudo pacman -Syyu`<br><br><br>
+- Update mirrorlist using: `sudo pacman -Syyu`
 
-
+<br><br>
 ### 🪟+🐧 Fix dual boot time change
-- Type in terminal: `sudo hwclock --systohc --localtime`<br><br><br>
+- Type in terminal: `sudo hwclock --systohc --localtime`
 
+<br><br>
 ### 🏗️ Faster compiling (Credit @Beci @ Github)
 
 - Edit makepkg.conf:
@@ -51,7 +53,7 @@
 - As the default package extension became zst `PKGEXT='.pkg.tar.zst'`, the compression isn't hurt badly anymore, but it can be speed  up by add the desired level to `COMPRESSZST`, like add `-1`:
 `COMPRESSZST=(zstd -1 -c -z -q -)`<br><br><br>
 
-
+<br><br>
 ### 🖥️ Fix SDDM hanging the system for 1m30s
 
 - Copy the default systemd config file to the subdirectory: 
@@ -64,7 +66,7 @@
 `#DefaultTimeoutStopSec=90s`<br><br><br>
 
 
-
+<br><br>
 ### 🖱️ Fix slow scroll speed in X11
 * Install imwheel: `yay -S imwheel`
 * Edit: `~/.imwheelrc` file and paste this: <br>
@@ -112,13 +114,13 @@ fi
 ```
 
 
-<br><br><br>
+<br><br>
 ### 😴 Disable Sleep, Hybrid Sleep, Hibernate and Suspend
 ```
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
 
-<br><br><br>
+<br><br>
 ### 📋Disable bracketed paste mode
     Fix for pasting anything to terminal and without showing "^[[200~ ..." or other symbols
 
@@ -126,7 +128,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 - Just add line and restart terminal: `set enable-bracketed-paste off`
 
 
-<br><br><br>
+<br><br>
 ### 📶 Replace networks name
     Make network name like "eth0" instead of "ensXxxx"
 #### Using GRUB
@@ -145,7 +147,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 
-<br><br><br>
+<br><br>
 ### 🔑 Replacing GRUB with rEFInd + Adding shim
     (TPM 2.0 + Secure Boot enabled and there's no need to manually boot Win11 / Linux distro)
     
@@ -171,7 +173,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 
-<br><br><br>
+<br><br>
 ### 🎵 Fix media buttons not working in some apps like Spotify, Firefox...
 
     
@@ -193,10 +195,28 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 
+<br><br>
+### ⌨️ Show asterix(*) symbol instead nothing when typing password in terminal
+
+    
+- Type in terminal: `sudo visudo`
+- Look for the line or create: `Defaults env_reset`
+- Put `pwfeedback` into line e.g. `Defaults env_reset,pwfeedback`
+
+
+<br><br>
 
 
 
-<br><br><br>
+
+
+
+
+
+
+
+
+
 ### ⚙️ KDE Settings that I use.
 ```
 ➡️ Home
