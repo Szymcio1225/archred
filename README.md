@@ -148,33 +148,31 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 <br><br>
-### 🔑 Replacing GRUB with rEFInd + Adding shim
-    (TPM 2.0 + Secure Boot enabled and there's no need to manually boot Win11 / Linux distro)
+### 🔑 Replacing GRUB with rEFInd
     
-- Install `refind`, `shim-signed`: `yay -S refind shim-signed`
+- Install `refind` with `yay -S refind (Install shim to dual boot with Windows 11 or just TPM Enabled: `yay -S shim-signed`)
 
-- Install shim to refind: `refind-install --shim /usr/share/shim-signed/shimx64.efi`
+- Install refind with shim: `refind-install --shim /usr/share/shim-signed/shimx64.efi`
+
+- Remove entry that contains grub from `efibootmgr`: Example: if grub is "Boot0003" entry then use `sudo efibootmgr --delete-bootnum --bootnum 3`
 
 - Reboot (It should boot to rEFInd boot manager)
 
-- To add kernel parameters like `net.ifnames=0 biosdevname=0`etc. just edit `/boot/refind_linux.conf`
+- To add kernel parameters like `net.ifnames=0 biosdevname=0` etc. just edit `/boot/refind_linux.conf`
 
 - To edit more options like default OS launch timeout edit `/boot/efi/EFI/refind/refind.conf`
 
 - To hide boot entries just select entry with arrow key and press Delete key.
 
-- To show more kernels entries like linux-lts, linux-zen just uncomment line #extra_kernel_version_strings linux-lts,linux (default entries; if you want to add zen kernel then add ",linux-zen")
+- To show more kernels entries like linux-lts, linux-zen just uncomment line `#extra_kernel_version_strings linux-lts,linux` (default entries; if you want to add zen kernel then add `,linux-zen`)
 
 - Default menu selection; Find `#default_selection` line and just edit it.
-
-- My example if I want to boot after X timeout to Windows then I just add `default_selection Microsoft` and for Linux with ZEN kernel `default_selection "vmlinuz-linux-zen"` (you can find these names in rEFInd manager under OS icons')
-
-
+  My example if I want to boot after X timeout to Windows then I just add `default_selection Microsoft` and for Linux with ZEN kernel `default_selection "vmlinuz-linux-zen"` (you can find these names in rEFInd manager under OS icons')
 
 
 
 <br><br>
-### 🎵 Fix media buttons not working in some apps like Spotify, Firefox...
+### 🎵 Fix media buttons not working in some apps or in the background like Spotify, Firefox...
 
     
 - Install playerctl<br>`yay -S playerctl`
@@ -186,12 +184,12 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 - In Action tab put this command:<br>`playerctl --player=vlc,spotify,mpv,firefox previous`
 - Other media keys
 
-`playerctl --player=vlc,spotify,mpv,firefox previous`<br>
-`playerctl --player=vlc,spotify,mpv,firefox next`<br>
-`playerctl --player=vlc,spotify,mpv,firefox play-pause`<br>
-`playerctl --player=vlc,spotify,mpv,firefox stop`<br>
+ `playerctl --player=vlc,spotify,mpv,firefox previous`<br>
+ `playerctl --player=vlc,spotify,mpv,firefox next`<br>
+ `playerctl --player=vlc,spotify,mpv,firefox play-pause`<br>
+ `playerctl --player=vlc,spotify,mpv,firefox stop`<br>
 
-**Source @ https://github.com/altdesktop/playerctl ❤️**
+ **Source @ https://github.com/altdesktop/playerctl ❤️**
 
 
 
@@ -207,32 +205,22 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 <br><br>
 
 
-
-
-
-
-
-
-
-
-
-
 ### ⚙️ KDE Settings that I use.
 ```
 ➡️ Home
 
-    Theme:
+    	Theme:
     "Breeze Dark"
 
 	Animation speed:
     13(5 from right)
 
-    Clicking files or folder:
+    	Clicking files or folder:
     "Selects them"
 	
 ➡️ Appearance
 
-    Plasma Style: "Willow Dark"
+    	Plasma Style: "Willow Dark"
 
 	Colors: "Willow Dark"
 
@@ -251,13 +239,13 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 	
 ➡️ Workspace Behavior
 
-    Screen Edges:
+    	Screen Edges:
     Remove Top Left Corner Action(Set to No Action)
 
 	Screen Locking:
     Lock screen automatically: "After..." Disabled (Untick)
 
-    Screen Locking:
+    	Screen Locking:
     Appearance:(Configure...)
     Set Lock screen wallpaper to anything
 	
@@ -267,55 +255,63 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 ➡️ Window Management
 
-    Task Switcher:
-    Visualization:
-    Change to Thumbnail Grid (Same for alternative)
+    	Task Switcher:
+    	Visualization:
+    Change to Thumbnail Grid (Same for alternative) (Install kdeplasma-addons if not showing up)
 
 ➡️ Shortcuts
 
 	Accessibility: Disable default shortcut
 	
-	+Add Application:
-    Konsole(or other terminal): "CTRL + ALT + T" (Should be default)
+	Add Custom Shortcut:
+	Restart Plasma Shell: Global Shortcut > Command/URL Trigger:
+	"killall plasmashell; kstart plasmashell", set to "CTRL + ALT + DEL"
+	
+	Add Application:
+    	Konsole(open terminal): "CTRL + ALT + T" (Should be default)
+	KSysGuard(open ksysguard): "CTRL + SHIFT + ESC"
 	
 	KRunner:
-    KRunner: Enable "Search"
-    Add "META+R"(WIN+R) shortcut
+    	KRunner: Enable "Search"
+   	Add "META+R"(WIN+R) shortcut
 	
 	Spectacle(Screenshots) enable and set only:
 	Capture Entire Desktop: "Print Screen"
 	Capture Rectangular Region: "META + SHIFT + X" (Win + SHIFT + X)
 	
+	In Spectacle: Configure > Recangular Region Selection; enable
+	Show Magnifier
+	Accept on click-and-release
+	
 	System Settings:
-    Set to "META + I" (Win + I)
+    	Set to "META + I" (Win + I)
 	
 	KWin:
-    Set switch to Desktop X: to "RIGHT SHIFT + numX..."
+	Set switch to Desktop X: to "RIGHT SHIFT + numpadX..." (numpad 1-9)
 	
 	Power Management:
-    Disable shortcut for "Hibernate" & "Suspend"
+    	Disable shortcut for "Hibernate" & "Suspend"
 	
 	Session Management:
-    Disable shortcut for "Log out"
-
-
+    	Disable shortcut for "Log out"
+	
 ➡️ Startup and Shutdown
 
-    Login Screen (SDDM)
+    	Login Screen (SDDM)
         Set to "Breeze" with any wallpaper
 
-    Desktop Session
+    	Desktop Session
         When logging in: > "Start with an empty session"
 
 ➡️ Search
 
 	File Search: Disable
 
-    Plasma Search:
-    Configure KRunner > History: Disable "Retain previous search" and "Activity aware"
+    	Plasma Search:
+    	Configure KRunner > History: Disable "Retain previous search" and "Activity aware"
    
-    Available plugins:
-    Disable
+    	Available plugins:
+    	Disable:
         "Bookmarks"
         "Browser history"
         "Browser tabs"
@@ -326,7 +322,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 ➡️ Regional Settings
 
-    Region & Language:
+    	Region & Language:
         Region: Language: American English, everything else Polish
 
         (If you want interface in English and everything else in your region like time)
@@ -335,37 +331,37 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 ➡️ Configure Firewall
 
-    Enable "Firewall Status Enabled" (gufw/ufw or firewalld)
+    	Enable "Firewall Status Enabled" (gufw/ufw or firewalld)
 
 ➡️ Input Devices
 
-    Mouse:
+    	Mouse:
         Acceleration profile: Flat
         Scroll speed (Wayland): 8
         Pointer speed: 6
 
 ➡️ Power Management
 
-    Energy Saving
+    	Energy Saving
         Disable "Screen Energy Saving"
 
-    On laptop Disable sleep when closing lid OR turn off laptop screen
+    	On laptop Disable sleep when closing lid OR turn off laptop screen
         Brightness on battery set to 50%
         Brightness with power connected set to 100%
 	
 ➡️ KDE Panel
 
-    Move Virtual Desktops Widget to right side
+    	Move Virtual Desktops Widget to right side
 	
-    Pins:
+    	Pins:
         Any Web Browser
         Any File Manager
         Settings
         Terminal
 	
-    Panel Height: 48
+    	Panel Height: 46
 
-    System tray:
+    	System tray:
         Multimedia player: Always Hidden
         Notifications: Always Hidden
         Updates: Always Hidden
@@ -386,38 +382,70 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 🐬 Dolphin File Manager Settings
 
-    Configure Dolphin
-		General:
-			Behavior > Sorting mode: Alphabetical, case sensitive
-			Confirmations > Enable Moving files or folder to trash
+    	Configure Dolphin
+	General:
+	
+	Behavior > Sorting mode: Alphabetical, case sensitive
+	Confirmations > Enable Moving files or folder to trash
 		
-		Startup:
-		Show on startup
-			/home/YourUserName
+	Startup:
+	Show on startup: /home/YourUserName
 			
-			New windows:
-				Enable:
-				Show filter bar;
-				Make location bar editable;
+	New windows:
+	Enable:
+	Show filter bar;
+	Make location bar editable;
 
-			General:
-				Enable:
-				Show full path inside location bar;
-				Show full path in title bar;
+	General:
+	Enable:
+	Show full path inside location bar;
+	Show full path in title bar;
 			
-		View modes: (Sizes)
-			Icons: 2,2
-			Compact: 1,1
-			Details: 1,1
+	View modes: (Sizes)
+	Icons: 2,2
+	Compact: 1,1
+	Details: 1,1
 			
-		Context Menu:
-			Enable:
-			"Copy To and Move To commands"
-			"Delete"
+	Context Menu:
+	Enable:
+	"Copy To and Move To commands"
+	"Delete"
 			
-			Download New Services:
-			"Open Dolphin as root"
-			
+	Download New Services:
+	"Open Dolphin as root"
+		
+	Configure Toolbars:
+	On right side set (without showing text):
+	Back
+	Home
+	Forward
+	Seperator
+	View Mode
+	Split
+	New Tab
+	Seperator
+	Terminal
+	Seperator
+	Location Bar
+	Stash
+	Search
+	Open Menu
+		
+		
+📝 KWrite (Text editor)
+
+    	Settings > Toolbars shown:
+    	Main Toolbar
+	Hamburger Menu Toolbar
+		
+		
+🖥️ Konsole (Terminal emulator)
+
+    	Settings > Toolbars shown:
+    	Main Toolbar
+	Session Toolbar
+
+
 ```
 
 
