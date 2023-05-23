@@ -54,7 +54,7 @@
 `COMPRESSZST=(zstd -1 -c -z -q -)`<br><br><br>
 
 <br><br>
-### 🖥️ Fix SDDM hanging the system for 1m30s
+### 🖥️ Fix Wayland SDDM hanging the system for 1m30s
 
 - Copy the default systemd config file to the subdirectory: 
 `sudo cp /etc/systemd/system.conf /etc/systemd/system.conf.d/`
@@ -62,7 +62,7 @@
 - Open system.conf file:
 `sudo nano /etc/systemd/system.conf.d/system.conf`
 
-- Uncomment and set to shorter time:
+- Uncomment and set to shorter time like 10s:
 `#DefaultTimeoutStopSec=90s`<br><br><br>
 
 
@@ -89,8 +89,8 @@ Shift_L, Up, Shift_L|Button4
 Shift_L, Down, Shift_L|Button5
 
 "^Spotify$"
-None, Up, Button4, 10
-None, Down, Button5, 10
+None, Up, Button4, 3
+None, Down, Button5, 3
 Control_L, Up, Control_L|Button4
 Control_L, Down, Control_L|Button5
 Shift_L, Up, Shift_L|Button4
@@ -148,13 +148,16 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 <br><br>
-### 🔑 Replacing GRUB with rEFInd
+### 🔑 Replacing GRUB with rEFInd 
+<h1>ATTENTION THESE ARE EXPERIMENTAL STEPS DO IT AT YOUR OWN RISK</h1>
     
-- Install `refind` with `yay -S refind (Install shim to dual boot with Windows 11 or just TPM Enabled: `yay -S shim-signed`)
+- Install `refind` with `yay -S refind (Install shim to dual boot with Windows 11 or just Secure Boot & TPM Enabled: `yay -S shim-signed`)
 
 - Install refind with shim: `refind-install --shim /usr/share/shim-signed/shimx64.efi`
 
-- Remove entry that contains grub from `efibootmgr`: Example: if grub is "Boot0003" entry then use `sudo efibootmgr --delete-bootnum --bootnum 3`
+- Remove GRUB: `sudo pacman -Rn grub ` or `yay -Rn grub`
+
+- Remove entry that contains GRUB from `efibootmgr`: Example: if grub is "Boot0003" entry then use `sudo efibootmgr --delete-bootnum --bootnum 3`
 
 - Reboot (It should boot to rEFInd boot manager)
 
@@ -162,13 +165,25 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 - To edit more options like default OS launch timeout edit `/boot/efi/EFI/refind/refind.conf`
 
-- To hide boot entries just select entry with arrow key and press Delete key.
+- To hide boot entries in boot loader just select entry with arrow key and press Delete key.
 
 - To show more kernels entries like linux-lts, linux-zen just uncomment line `#extra_kernel_version_strings linux-lts,linux` (default entries; if you want to add zen kernel then add `,linux-zen`)
 
 - Default menu selection; Find `#default_selection` line and just edit it.
-  My example if I want to boot after X timeout to Windows then I just add `default_selection Microsoft` and for Linux with ZEN kernel `default_selection "vmlinuz-linux-zen"` (you can find these names in rEFInd manager under OS icons')
-
+  My example if I want to boot after X timeout to Windows then I just add `default_selection Microsoft` and for Linux with ZEN kernel `default_selection "vmlinuz-linux-zen"` (you can find these names in rEFInd manager under OS icons')<br><br>
+- Additionaly I use `sbctl` Secure Boot Manager @ ( https://github.com/Foxboron/sbctl )
+- Install `sbctl`: `pacman -S sbctl` or `yay -S sbctl`
+- type `sbctl status` to check if its working.
+- In my MSI B450 Tomahawk Max(MS-7C02)(BIOS: 7C02v3G, 27-04-2023) BIOS settings I had to disable Secure boot, Secure boot mode set to Custom and Clear keys.'
+  In my case on my machine `System Mode` goes from `User` to `Setup` and then I can use `sbctl` fully.
+- Now `sbctl status` shows that I have setup mode Enabled.
+- Lets create and enroll keys
+- Use `sudo sbctl create-keys` and `sudo sbctl enroll-keys -m` to generate "M$" keys
+- Check if `sbctl status` in last line says `Vendor Keys:    microsoft`
+- Last thing is to sign EFI images
+- Use `sudo sbctl verify` to check which EFI images are not signed
+- Last thing is to sign them using command like this `sudo sbctl sign -s /boot/efi/EFI/refind/refind_x64.efi`
+- After signing EFI images `sudo sbctl verify` command should show signed EFI images.
 
 
 <br><br>
@@ -450,7 +465,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 ### 🛠️ TO DO
-- Automate everything
+- Automate everything?
 
 ### 😲👉🆓⁉️
 Feel free to use this! 😋
