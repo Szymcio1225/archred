@@ -129,6 +129,13 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 
 <br><br>
+### 🖥️🔒 Change resolution and refresh rate in SDDM login screen (not lock screen)
+- Edit `Xsetup` file: `sudo nano /usr/share/sddm/scripts/Xsetup`
+- On xorg session check with command `xrandr` which displays are connected and their resolutions with refresh rate
+- In my case I added this new line: `xrandr --output DisplayPort-1 --mode 1920x1080 --rate 165`
+
+
+<br><br>
 ### 📶 Replace networks name
     Make network name like "eth0" instead of "ensXxxx"
 #### Using GRUB
