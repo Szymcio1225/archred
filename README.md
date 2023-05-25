@@ -37,6 +37,7 @@
 <br><br>
 ### 🪟+🐧 Fix dual boot time change
 - Type in terminal: `sudo hwclock --systohc --localtime`
+- On Windows: `reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f`
 
 <br><br>
 ### 🏗️ Faster compiling (Credit @Beci @ Github)
