@@ -2,7 +2,8 @@
     background-color: transparent !important;
     -moz-context-properties: stroke !important;
     stroke: currentColor !important;
-    height: 26px !important;
+    height: 36px !important;
+    margin-bottom: 0px !important;
   }
   .titlebar-button:hover{ background-color: hsla(0,0%,100%,.32) !important }
   .titlebar-close:hover{ background-color: hsl(0, 100%, 50%) !important }
