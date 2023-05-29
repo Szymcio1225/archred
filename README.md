@@ -229,14 +229,15 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 ### 🦊🌎 Firefox tweaks that I use
 
-- `network.dns.echconfig.enabled` `true`
-- `network.dns.use_https_rr_as_altsvc` `true`
-- `toolkit.legacyUserProfileCustomizations.stylesheets` `true`
-- `browser.compactmode.show` `true`
-- `browser.tabs.tabmanager.enabled` `false`
-- `full-screen-api.transition-duration.enter` `0 0`
-- `full-screen-api.transition-duration.leave` `0 0`
-
+- Allow Firefox to use ECH `network.dns.echconfig.enabled` `true`
+- Allow Firefox to use ECH `network.dns.use_https_rr_as_altsvc` `true`
+- Enable userChrome.css `toolkit.legacyUserProfileCustomizations.stylesheets` `true`
+- Show compact mode in Density selector`browser.compactmode.show` `true`
+- Removing "Tab List Arrow" in tab bar `browser.tabs.tabmanager.enabled` `false`
+- Disable fullscreen animation when entering fullscreen (default 200 200) `full-screen-api.transition-duration.enter` `0 0`
+- Disable fullscreen animation when leaving fullscreen (default 200 200) `full-screen-api.transition-duration.leave` `0 0`
+- If some letters are green like l,I then remove value from this `gfx.font_rendering.cleartype_params.force_gdi_classic_for_families`
+- (default value: `Arial,Consolas,Courier New,Microsoft Sans Serif,Segoe UI,Tahoma,Trebuchet MS,Verdana`)
 
 <br><br>
 
