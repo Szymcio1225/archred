@@ -227,6 +227,19 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 <br><br>
 
+### 🦊🌎 Firefox tweaks that I use
+
+- `network.dns.echconfig.enabled` `true`
+- `network.dns.use_https_rr_as_altsvc` `true`
+- `toolkit.legacyUserProfileCustomizations.stylesheets` `true`
+- `browser.compactmode.show` `true`
+- `browser.tabs.tabmanager.enabled` `false`
+- `full-screen-api.transition-duration.enter` `0 0`
+- `full-screen-api.transition-duration.leave` `0 0`
+
+
+<br><br>
+
 
 ### ⚙️ KDE Settings that I use.
 ```
