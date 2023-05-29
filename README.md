@@ -231,6 +231,7 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 - Allow Firefox to use ECH `network.dns.echconfig.enabled` `true`
 - Allow Firefox to use ECH `network.dns.use_https_rr_as_altsvc` `true`
+- Disable popping up menu when pressing ALT key `ui.key.menuAccessKeyFocuses` `false`
 - Enable userChrome.css `toolkit.legacyUserProfileCustomizations.stylesheets` `true`
 - Show compact mode in Density selector`browser.compactmode.show` `true`
 - Removing "Tab List Arrow" in tab bar `browser.tabs.tabmanager.enabled` `false`
