@@ -2,7 +2,7 @@
     background-color: transparent !important;
     -moz-context-properties: stroke !important;
     stroke: currentColor !important;
-    height: 32px !important; /* change size for minimize, maximize and close buttons*/
+    height: 26px !important;
   }
   .titlebar-button:hover{ background-color: hsla(0,0%,100%,.32) !important }
   .titlebar-close:hover{ background-color: hsl(0, 100%, 50%) !important }
@@ -14,24 +14,21 @@
 
 
 
-  /* Source: https://github.com/MrOtherGuy/firefox-csshacks */
+/* Source: https://github.com/MrOtherGuy/firefox-csshacks */
 /* about:config > toolkit.legacyUserProfileCustomizations.stylesheets set to true */
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 @namespace html url("http://www.w3.org/1999/xhtml");
 
-/* Diable Proton UI*/
+/* Disable Proton UI*/
 :root[id]{
   --proton-tab-block-margin: 0px !important;
-  --tab-block-margin: 0px !important;
-  --tabs-shadow-size: 1px !important;
+  /*--tab-block-margin: 0px !important;*/
+  --tabs-shadow-size: 0px !important;
   
   /* Remove next line if you want selected tab to have color other than toolbar background - then it follows your theme color  */
   --lwt-selected-tab-background-color: var(--toolbar-bgcolor) !important; 
 }
-
-/* Uncomment next line to force specific color for tab top line */
-/* #tabbrowser-tabs{ --tab-line-color: blue !important; } */
 
 /* These next two rules set a color for border around tabs and between tabs & navigation toolbars. Set to transparent to remove the border.*/
 #nav-bar{
@@ -46,7 +43,7 @@
   --toolbarbutton-inner-padding: 7px !important;
 }
 #navigator-toolbox:not([movingtab]) > #titlebar > #TabsToolbar{
-  --toolbar-bgcolor: transparent;
+  --toolbar-bgcolor: #484848;
 }
 
 #TabsToolbar .toolbarbutton-1 > .toolbarbutton-badge-stack,
@@ -63,17 +60,10 @@
 .tab-content[pinned]{ padding-inline: 11px !important; }
 
 .tab-background{
-  border-radius: 6px !important;
+  border-radius: 0px !important;
   box-shadow: none !important;
 }
 
-/* Line to mark selected tab */
-.tab-background[selected]::before,
-.tabbrowser-tab:hover > stack > .tab-background::before{
-  display: -moz-box;
-  height: 1px;
-  content: "";
-}
 .tab-stack:hover > .tab-background::before{
   background-color: inherit;
 }
@@ -81,10 +71,6 @@
   background-color: #484848;
   background-image: linear-gradient(var(--tab-line-color),var(--tab-line-color));
 }
-/* Photon-like tab on hover animation for the top line */
-@keyframes tab-onhover-line-anim{ from{ margin-inline: 20px } to { margin-inline: 0 } }
-
-.tab-stack:hover > .tab-background::before{ animation: tab-onhover-line-anim 160ms }
 
 /* Disable animation for selected and pinned tabs */
 .tabbrowser-tab:is([pinned],[selected]) > .tab-stack > .tab-background::before{ animation: none }
@@ -92,25 +78,9 @@
 /* moves context-line to the bottom */
 .tab-context-line{ -moz-box-ordinal-group: 2; margin-inline: 10px !important; }
 
-
-/* Source file https://teddit.net/r/FirefoxCSS/comments/oiycgx/restore_tab_separator_lines/h4yuli3/#c */
-/* Bring back tab separator lines that were removed in Proton */
-
-.tabbrowser-tab:not(:hover, [beforehovered], [selected], [last-visible-tab], [beforeselected-visible])::after {
-  content: "";
-  display: block;
-  border-left: 1px solid currentColor;
-  margin-block: 1px;
-  margin-left: -1px;
-  opacity: 0.3;
-}
-
 /* Use Bookmark Star Icon for Library */
 #library-button .toolbarbutton-icon {
-/* 	list-style-image: url("chrome://browser/skin/bookmark-hollow.svg"); */
-/* 	list-style-image: url("chrome://browser/skin/bookmark.svg"); */
 	list-style-image: url("chrome://browser/skin/bookmark-star-on-tray.svg");
-/* 	list-style-image: url("chrome://browser/skin/bookmarks-toolbar.svg"); */
 }
 
 /* Remove left tabbar padding when not maximized. */
