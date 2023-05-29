@@ -1,4 +1,20 @@
-/* Source: https://github.com/MrOtherGuy/firefox-csshacks */
+.titlebar-button{
+    background-color: transparent !important;
+    -moz-context-properties: stroke !important;
+    stroke: currentColor !important;
+    height: 32px !important; /* change size for minimize, maximize and close buttons*/
+  }
+  .titlebar-button:hover{ background-color: hsla(0,0%,100%,.32) !important }
+  .titlebar-close:hover{ background-color: hsl(0, 100%, 50%) !important }
+  
+  .titlebar-close{ list-style-image: url(chrome://browser/skin/window-controls/close.svg) !important }
+  .titlebar-min{ list-style-image: url(chrome://browser/skin/window-controls/minimize.svg) !important }
+  .titlebar-max{ list-style-image: url(chrome://browser/skin/window-controls/maximize.svg) !important }
+  .titlebar-restore{ list-style-image: url(chrome://browser/skin/window-controls/restore.svg) !important }
+
+
+
+  /* Source: https://github.com/MrOtherGuy/firefox-csshacks */
 /* about:config > toolkit.legacyUserProfileCustomizations.stylesheets set to true */
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
@@ -55,14 +71,14 @@
 .tab-background[selected]::before,
 .tabbrowser-tab:hover > stack > .tab-background::before{
   display: -moz-box;
-  height: 2px;
+  height: 1px;
   content: "";
 }
 .tab-stack:hover > .tab-background::before{
   background-color: inherit;
 }
 .tab-stack > .tab-background[selected]::before{
-  background-color: highlight;
+  background-color: #484848;
   background-image: linear-gradient(var(--tab-line-color),var(--tab-line-color));
 }
 /* Photon-like tab on hover animation for the top line */
