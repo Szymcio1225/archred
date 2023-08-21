@@ -242,6 +242,12 @@ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.ta
 
 <br><br>
 
+### 🎨 Neofetch & Fastfetch configs
+- I personally use Neofetch on my Windows 11 PC in Terminal and Fastfetch on my EndeavourOS (Arch) Linux laptop.
+- You need to use any font from "nerdfonts.com" to see glyphs (icons) in terminal.
+- Font that I use is "FiraCode Nerd Font Mono".
+<br><br>
+
 
 ### ⚙️ KDE Settings that I use.
 ```
